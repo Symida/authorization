@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: authorization
+symida:
+  accounts:
+    host: "http://localhost:8081"
+  ui:
+    host: ${UI_HOST:localhost:9000}
+  auth:
+    jwt:
+      secret: aVeryLongSecretKeyThatIsAtLeast32Characters
+      expirationMs: 3000000
