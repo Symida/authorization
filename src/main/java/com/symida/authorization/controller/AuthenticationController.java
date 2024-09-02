@@ -5,8 +5,8 @@ import com.symida.authorization.model.Account;
 import com.symida.authorization.model.Role;
 import com.symida.authorization.payload.ui.request.LoginRequest;
 import com.symida.authorization.payload.ui.request.RegisterRequest;
+import com.symida.authorization.payload.ui.response.AccountInfoResponse;
 import com.symida.authorization.payload.ui.response.MessageResponse;
-import com.symida.authorization.payload.ui.response.UserInfoResponse;
 import com.symida.authorization.service.impl.AccountServiceImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -47,7 +47,7 @@ public class AuthenticationController {
                 .ok()
                 .header(HttpHeaders.AUTHORIZATION, jwtHeader)
                 .body(
-                        UserInfoResponse.builder()
+                        AccountInfoResponse.builder()
                                 .id(account.getId())
                                 .username(account.getUsername())
                                 .email(account.getEmail())

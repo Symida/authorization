@@ -2,7 +2,7 @@ package com.symida.authorization.configuration;
 
 import com.symida.authorization.configuration.jwt.AuthEntryPointJwt;
 import com.symida.authorization.configuration.jwt.AuthTokenFilter;
-import com.symida.authorization.service.impl.CustomUserDetailsService;
+import com.symida.authorization.service.impl.AccountDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,7 +25,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class WebSecurityConfig {
 
-    private final CustomUserDetailsService customUserDetailsService;
+    private final AccountDetailsService accountDetailsService;
     private final AuthEntryPointJwt unauthorizedHandler;
 
     @Bean
@@ -70,7 +70,7 @@ public class WebSecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return customUserDetailsService;
+        return accountDetailsService;
     }
 
     @Bean

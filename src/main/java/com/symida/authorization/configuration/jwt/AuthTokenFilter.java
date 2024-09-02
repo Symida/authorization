@@ -1,6 +1,6 @@
 package com.symida.authorization.configuration.jwt;
 
-import com.symida.authorization.service.impl.CustomUserDetailsService;
+import com.symida.authorization.service.impl.AccountDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,7 +23,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
     @Autowired
     private JwtUtils jwtUtils;
     @Autowired
-    private CustomUserDetailsService customUserDetailsService;
+    private AccountDetailsService accountDetailsService;
 
     @Override
     protected void doFilterInternal
@@ -37,7 +37,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
             var jwt = jwtUtils.getJwtFromHeader(request);
             if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
 
-                var userDetails = customUserDetailsService.loadUserByUsername(
+                var userDetails = accountDetailsService.loadUserByUsername(
                         jwtUtils.getUserNameFromJwtToken(jwt)
                 );
 

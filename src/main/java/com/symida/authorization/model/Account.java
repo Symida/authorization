@@ -22,7 +22,6 @@ public class Account implements UserDetails {
     private String email;
     private Role role;
     private String username;
-
     private String password;
 
     @Override
